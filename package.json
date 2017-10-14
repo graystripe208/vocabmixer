@@ -1,0 +1,31 @@
+{
+  "name": "vocabmixer",
+  "version": "0.0.1",
+  "description": "An application to make practicing vocabulary words fun.",
+  "author": "Kyle Lind <kyle.n.lind@outlook.com> & Brandon Lind <linddeveloper@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/graystripe208/vocabmixer#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/graystripe208/vocabmixer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/graystripe208/vocabmixer/issues"
+  },
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node ./src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": "6.9.5",
+    "npm": "3.10.10"
+  },
+  "devDependencies": {
+    "eslint": "4.8.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2"
+  }
+}
