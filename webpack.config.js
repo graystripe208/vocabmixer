@@ -7,29 +7,26 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   entry: "./src/client/app.jsx",
   output: {
-    filename: "bundle.js",
-    sourceMapFilename: "bundle.map",
+    filename: "[name].js",
+    sourceMapFilename: "[name].map",
     path: __dirname
   },
   devtool: '#source-map',
-  resolve: {
-    extensions: ['', '.js', '.jsx']
+  devServer: {
+    contentBase: './public'
   },
   module: {
     loaders: [{
       test: /\.jsx?$/,
-      loader: 'babel',
+      loader: 'babel-loader',
       exclude: /node_modules/,
       query: {
         cacheDirectory: true,
-        presets: ['react', 'es2015']
+        presets: ['env', 'react']
       }
     }]
   },
   plugins: [
-    new webpack.NoErrorsPlugin(),
-    new webpack.optimize.DedupePlugin(),
-
     // https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
       template: './src/client/index.html',
