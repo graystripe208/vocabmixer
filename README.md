@@ -1,18 +1,18 @@
 # Vocabmixer
 A fun way to practice your vocabulary words!!!
 
-## How to install, build and start the application
+## How to install and run the application
 - Download to a location which has node v6.9.5 installed
 - Install
 ```javascript
 npm install
 ```
-- Build
+- Run in development mode
 ```javascript
-gulp build
+npm run dev
 ```
-- Start the application
+- Start in production mode
 ```javascript
-gulp
+npm start
 ```
 - Navigate to http://localhost:8080
