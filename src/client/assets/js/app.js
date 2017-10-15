@@ -1,7 +1,10 @@
 (function ($) {
     var ingredients = [];
+    var $dadc = $("#dadc");
 
     $(document).ready(function () {
+        $dadc.hide();
+    
         $("#ingredientsForm").on("submit", function (e) {
             var word = $('#word').val();
             var desc = $('#definition').val();
@@ -28,6 +31,14 @@
                 status: null,
                 word: word
             });
+
+            if(ingredients.length<2){
+                $dadc.hide();
+            } else{
+                $dadc.show();
+            }
         });
+
+        
     });
 })(window.jQuery);
