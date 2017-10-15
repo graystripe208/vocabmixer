@@ -1,19 +1,15 @@
 'use strict';
 
-var webpack = require('webpack');
+var CleanWebpackPlugin = require('clean-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: "./src/client/app.jsx",
   output: {
-    filename: "[name].js",
-    sourceMapFilename: "[name].map",
-    path: __dirname
-  },
-  devtool: '#source-map',
-  devServer: {
-    contentBase: './public'
+    filename: "bundle.js",
+    sourceMapFilename: "bundle.map",
+    path: __dirname + '/public'
   },
   module: {
     loaders: [{
@@ -27,6 +23,8 @@ module.exports = {
     }]
   },
   plugins: [
+    new CleanWebpackPlugin(['public/*.*']),
+
     // https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
       template: './src/client/index.html',
