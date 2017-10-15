@@ -3,9 +3,10 @@
 var CleanWebpackPlugin = require('clean-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-  entry: "./src/client/app.jsx",
+  entry: ["./src/client/app.jsx", './src/client/assets/sass/main.scss'],
   output: {
     filename: "bundle.js",
     sourceMapFilename: "bundle.map",
@@ -13,17 +14,21 @@ module.exports = {
   },
   module: {
     loaders: [{
-      test: /\.jsx?$/,
-      loader: 'babel-loader',
-      exclude: /node_modules/,
-      query: {
-        cacheDirectory: true,
-        presets: ['env', 'react']
+        test: /\.jsx?$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/,
+        query: {
+          cacheDirectory: true,
+          presets: ['env', 'react']
+        }
+      }, {
+        test: /\.(sass|scss)$/,
+        loader: ExtractTextPlugin.extract(['css-loader', 'sass-loader'])
       }
-    }]
+    ]
   },
   plugins: [
-    new CleanWebpackPlugin(['public/*.*']),
+    new CleanWebpackPlugin(['./public/**/*.*']),
 
     // https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
@@ -37,12 +42,13 @@ module.exports = {
       to: 'assets/js/[name].js'
     }]),
     new CopyWebpackPlugin([{
-      from: './src/client/assets/css/*.css',
-      to: 'assets/css/[name].css'
-    }]),
-    new CopyWebpackPlugin([{
       from: './src/client/images/*.*',
       to: 'images/[name].[ext]'
-    }])
+    }]),
+
+    new ExtractTextPlugin({
+      filename: 'bundle.css',
+      allChunks: true,
+    })
   ]
 };
