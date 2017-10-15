@@ -1,0 +1,21 @@
+/* Draggable */
+
+.draggable {
+  cursor: move;
+
+  &.dragging {
+    border-radius: _size(border-radius);
+		border: solid _size(border-width);
+		padding: 1.5rem;
+  }
+}
+
+@mixin color-box($p: null) {
+  .draggable {
+    &.dragging {
+      border-color: _palette($p, border);
+    }
+  }
+}
+
+@include color-box;
