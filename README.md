@@ -1,13 +1,17 @@
 # Vocabmixer
 A fun way to practice your vocabulary words!!!
 
-## How to build and start the application
-- Download to a location which has at least node v6.9.5 installed
-- Install / Build
+## How to install and run the application
+- Download to a location which has node v6.9.5 installed
+- Install
 ```javascript
 npm install
 ```
-- Start the application
+- Run in development mode
+```javascript
+npm run dev
+```
+- Start in production mode
 ```javascript
 npm start
 ```
