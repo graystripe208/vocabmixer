@@ -102,21 +102,19 @@ class Table extends React.Component {
   
         return;
       }
-  
-      let rows = ingredients.map((ingredient) => 
-        <tr key={ingredient.id}>
-          <td>
-            <div className="draggable" draggable="true">
-              <span className="icon style2 fa-arrows-v"></span>
-              {ingredient.word}
-            </div>
-          </td>
-          <td>{ingredient.definition}</td>
-        </tr>
-      );
+
+      let dl = ingredients.reduce((newAr, item) => {
+        return newAr.concat([
+          <dt key={`def-${item.key}`} className="draggable" draggable="true">
+            <span className="icon style2 fa-arrows-v"></span>
+            {item.word}
+          </dt>,
+          <dd key={`term-${item.key}`}>{item.definition}</dd>
+        ]);
+      }, []);
       
       this.setState({
-        items: rows
+        items: dl
       });
     });
   }
@@ -127,17 +125,9 @@ class Table extends React.Component {
 
   render() {
     return (
-      <table className="alt">
-      <thead>
-        <tr>
-          <th>Word</th>
-          <th>Definition</th>
-        </tr>
-      </thead>
-      <tbody>
+      <dl>
         {this.state.items}
-      </tbody>
-    </table>
+      </dl>
     );
   }
 }
@@ -146,10 +136,10 @@ let dataservice = new DataService();
 
 ReactDOM.render(
   <Form dataService={dataservice} />,
-  document.getElementById('formRoot')
+  document.getElementById('ingredientsForm')
 );
 
 ReactDOM.render(
   <Table dataService={dataservice} items={dataservice.items} />,
-  document.getElementById('tableRoot')
+  document.getElementById('ingredientsList')
 );
