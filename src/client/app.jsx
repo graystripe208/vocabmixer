@@ -73,7 +73,6 @@ class Form extends React.Component {
         </div>
         <ul className="actions">
           <li><button type="submit">Add Ingredient</button></li>
-          <li><a href="#pour" className="button special smooth-scroll">Start the Mixer</a></li>
         </ul>
       </form>
     );
@@ -105,11 +104,11 @@ class Table extends React.Component {
 
       let dl = ingredients.reduce((newAr, item) => {
         return newAr.concat([
-          <dt key={`def-${item.key}`} className="draggable" draggable="true">
+          <dt key={`def-${item.id}`} className="draggable" draggable="true">
             <span className="icon style2 fa-arrows-v"></span>
             {item.word}
           </dt>,
-          <dd key={`term-${item.key}`}>{item.definition}</dd>
+          <dd key={`term-${item.id}`}>{item.definition}</dd>
         ]);
       }, []);
       

@@ -5,7 +5,7 @@
 
   &.dragging {
     border-radius: _size(border-radius);
-		border: solid _size(border-width);
+		border: _size(border-width) solid;
 		padding: 1.5rem;
   }
 }

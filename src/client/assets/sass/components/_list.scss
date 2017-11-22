@@ -166,16 +166,23 @@
 	}
 
 	dl {
-		margin: 0 0 _size(element-margin) 0;
+		margin: _size(element-margin) _size(element-margin);
+
 
 		dt {
 			display: block;
 			font-weight: _font(weight-bold);
-			margin: 0 0 (_size(element-margin) * 0.5) 0;
+			margin: 0 (_size(element-margin) * 0.5) (_size(element-margin) * 0.5);
+
+
+			> .icon {
+				margin-right: (_size(element-margin) * 0.25);
+			}
 		}
 
 		dd {
-			margin-left: _size(element-margin);
+			margin: 0 _size(element-margin) (_size(element-margin) * 0.5) (_size(element-margin) * 2.5);
+			padding: (_size(padding, small) * 0.5);
 		}
 
 		&.style2 {
@@ -203,6 +210,13 @@
 				li {
 					border-top-color: _palette($p, border);
 				}
+			}
+		}
+
+		dl {
+			dd {
+				background-color: _palette($p, bg-alt);
+				border-bottom: 1px solid _palette($p, border);
 			}
 		}
 	}
